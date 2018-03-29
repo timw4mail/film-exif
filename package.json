@@ -1,0 +1,43 @@
+{
+  "name": "film-exif-electron",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4",
+    "dist-exiftool": "^10.53.0",
+    "inferno": "^5.0.1",
+    "inferno-bootstrap": "^5.0.0",
+    "inferno-router": "^5.0.1",
+    "inferno-scripts": "6.3.0",
+    "node-exiftool": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.8.1",
+    "eslint": "^4.19.1",
+    "eslint-config-happiness": "^10.2.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-inferno": "^7.7.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "foreman": "^2.0.0"
+  },
+  "scripts": {
+    "build": "inferno-scripts build",
+    "dist": "npm run build && build",
+    "eject": "inferno-scripts eject",
+    "electron-start": "node src/electron-wait-inferno",
+    "electron": "electron .",
+    "fix": "eslint --fix src/**/*.js",
+    "lint": "eslint src/**/*.js",
+    "pack": "build --dir",
+    "postinstall": "eletron-builder install-app-deps",
+    "react-start": "BROWSER=none inferno-scripts start",
+    "start": "nf start -p 3000",
+    "test": "inferno-scripts test --env=jsdom"
+  },
+  "homepage": "./",
+  "main": "src/electron-starter.js"
+}
