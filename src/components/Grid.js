@@ -5,5 +5,5 @@ import Col from 'inferno-bootstrap/dist/Col'
 export {
 	Col,
 	Container,
-	Row
+	Row,
 }

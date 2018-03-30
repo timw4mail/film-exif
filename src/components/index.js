@@ -1,5 +1,1 @@
-import * as Grid from './Grid'
-
-export {
-	Grid,
-}
+export * from './Grid'
