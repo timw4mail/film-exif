@@ -27,7 +27,7 @@
     "build": "inferno-scripts build",
     "dist": "npm run build && build",
     "eject": "inferno-scripts eject",
-    "electron-start": "node src/electron-wait-inferno",
+    "electron-start": "node src/electron/wait-inferno",
     "electron": "electron .",
     "fix": "eslint --fix src/**/*.js",
     "lint": "eslint src/**/*.js",
@@ -38,5 +38,5 @@
     "test": "inferno-scripts test --env=jsdom"
   },
   "homepage": "./",
-  "main": "src/electron-starter.js"
+  "main": "src/electron/starter.js"
 }
