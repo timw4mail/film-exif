@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "4",
     "dist-exiftool": "^10.53.0",
     "inferno": "^5.0.1",
     "inferno-bootstrap": "^5.0.0",
@@ -33,7 +32,7 @@
     "fix": "eslint --fix src/**/*.js",
     "lint": "eslint src/**/*.js",
     "pack": "build --dir",
-    "postinstall": "eletron-builder install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "react-start": "BROWSER=none inferno-scripts start",
     "start": "nf start -p 3000",
     "test": "inferno-scripts test --env=jsdom"
