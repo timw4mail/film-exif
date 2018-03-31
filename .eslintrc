@@ -10,7 +10,9 @@
 		"plugin:inferno/recommended",
 		"eslint-config-happiness"
 	],
-	"globals": {},
+	"globals": {
+		"location": true
+	},
 	"parser": "babel-eslint",
 	"parserOptions": {
 		"ecmaVersion": 6,
@@ -47,6 +49,7 @@
 		"no-nested-ternary": "error",
 		"no-new-func": "error",
 		"no-new-wrappers": "error",
+		"no-restricted-globals": "off",
 		"no-return-assign": "error",
 		"no-return-await": "error",
 		"no-self-compare": "error",

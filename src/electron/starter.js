@@ -7,6 +7,9 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 
+// eslint-disable-next-line
+global.eval = () => {};
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -14,8 +17,10 @@ let mainWindow;
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		height: 600,
-		width: 800,
+		webPreferences: {
+			contextIsolation: true,
+			nodeIntegration: false,
+		},
 	});
 
 	// load the index.html of the app.
@@ -26,7 +31,9 @@ const createWindow = () => {
 	});
 	mainWindow.loadURL(startUrl);
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools({
+		mode: 'bottom',
+	});
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', () => {
