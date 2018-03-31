@@ -1,1 +1,1 @@
-export * from './CameraList'
+export * from './Camera';

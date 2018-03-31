@@ -1,3 +1,3 @@
 export const CameraList = () => {
-	return <div />
-}
+	return <div />;
+};
