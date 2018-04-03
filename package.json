@@ -9,7 +9,8 @@
     "inferno-router": "^5.0.1",
     "inferno-scripts": "6.3.0",
     "node-exiftool": "^2.3.0",
-    "query-string": "^6.0.0"
+    "query-string": "^6.0.0",
+    "sqlite3": "^4.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

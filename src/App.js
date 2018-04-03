@@ -30,11 +30,11 @@ const App = () => (
 					<Row>
 						<Form>
 							<FormGroup>
-								<Label htmlFor="brand">Brand</Label>
+								<label htmlFor="brand">Brand</label>
 								<Input type="text" id="brand" name="brand" />
 							</FormGroup>
 							<FormGroup>
-								<Label htmlFor="filmFormat">Film Format</Label>
+								<label htmlFor="filmFormat">Film Format</label>
 								<select className="custom-select" id="filmFormat" name="filmFormat">
 									<option value="110">110</option>
 									<option value="120">120</option>
