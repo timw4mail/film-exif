@@ -10,12 +10,16 @@
 }
 
 .full-height {
-	height: 100%;
+	height: 99vmin;
 }
 
 /*! Elements */
 html, body {
 	height: 100vh;
+}
+
+bs-container > * {
+	padding: 0.5em 1em;
 }
 
 /*! Ids */

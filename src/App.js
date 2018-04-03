@@ -1,6 +1,5 @@
 import { BrowserRouter, Link, NavLink } from 'inferno-router';
 import {
-	Container,
 	Nav,
 	Navbar,
 	NavbarBrand,
@@ -10,8 +9,8 @@ import { Routes } from './Routes';
 
 export const App = () => (
 	<BrowserRouter>
-		<Container className="full-height">
-			<Navbar className="sticky-top" color="dark" dark expandable="sm">
+		<bs-container className="full-height">
+			<Navbar className="static-top" color="dark" dark expandable="sm">
 				<NavbarBrand to="/" tag={Link}>Film Exif</NavbarBrand>
 				<Nav fill pills>
 					<NavItem>
@@ -26,6 +25,6 @@ export const App = () => (
 				</Nav>
 			</Navbar>
 			<Routes />
-		</Container>
+		</bs-container>
 	</BrowserRouter>
 );

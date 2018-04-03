@@ -8,6 +8,7 @@
     "inferno-bootstrap": "^5.0.0",
     "inferno-router": "^5.0.1",
     "inferno-scripts": "6.3.0",
+    "lodash": "^4.17.5",
     "node-exiftool": "^2.3.0",
     "query-string": "^6.0.0"
   },
