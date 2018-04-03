@@ -1,3 +1,24 @@
 /**
  * Custom styles for electron app
  */
+
+/*! Classes */
+.abs-center {
+	height: auto;
+	margin: auto;
+	width: auto;
+}
+
+.full-height {
+	height: 100%;
+}
+
+/*! Elements */
+html, body {
+	height: 100vh;
+}
+
+/*! Ids */
+#app {
+	height: 100vh;
+}
