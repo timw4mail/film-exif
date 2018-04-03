@@ -2,7 +2,14 @@ import { BrowserRouter } from 'inferno-router';
 import QueryString from 'query-string';
 
 import { Jumbotron } from './components/Bootstrap';
-import { Button, Form, FormGroup, Input, Label } from './components/Bootstrap/Form';
+import {
+	Button,
+	Form,
+	FormGroup,
+	Input,
+	Label,
+	Select
+} from './components/Bootstrap/Form';
 import { Container, Row } from './components/Bootstrap/Grid';
 
 const App = () => (
@@ -25,6 +32,15 @@ const App = () => (
 							<FormGroup>
 								<Label htmlFor="brand">Brand</Label>
 								<Input type="text" id="brand" name="brand" />
+							</FormGroup>
+							<FormGroup>
+								<Label htmlFor="filmFormat">Film Format</Label>
+								<select className="custom-select" id="filmFormat" name="filmFormat">
+									<option value="110">110</option>
+									<option value="120">120</option>
+									<option value="127">127</option>
+									<option value="135">135</option>
+								</select>
 							</FormGroup>
 							<Button color="primary" type="submit">Save</Button>
 						</Form>
