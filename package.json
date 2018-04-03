@@ -9,15 +9,13 @@
     "inferno-router": "^5.0.1",
     "inferno-scripts": "6.3.0",
     "node-exiftool": "^2.3.0",
-    "query-string": "^6.0.0",
-    "sqlite3": "^4.0.0"
+    "query-string": "^6.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "bootstrap": "4",
     "electron": "^1.8.4",
     "electron-builder": "^20.8.1",
-    "electron-react-devtools": "^0.5.3",
     "eslint": "^4.19.1",
     "eslint-config-happiness": "^10.2.1",
     "eslint-plugin-import": "^2.9.0",

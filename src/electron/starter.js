@@ -31,10 +31,9 @@ const createWindow = () => {
 	});
 	mainWindow.loadURL(startUrl);
 	// Open the DevTools.
-	require('electron-react-devtools').install();
 	/* mainWindow.webContents.openDevTools({
 		mode: 'bottom',
-	});*/
+	}); */
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', () => {

@@ -27,17 +27,8 @@ export const HomeView = (props) => {
 				<Row>
 					<Form>
 						<FormGroup>
-							<Label tag='label' for="brand">Brand</Label>
+							<Label tag="label" for="brand">Brand</Label>
 							<Input type="text" id="brand" name="brand" />
-						</FormGroup>
-						<FormGroup>
-							<Label tag='label' for="filmFormat">Film Format</Label>
-							<select className="custom-select" id="filmFormat" name="filmFormat">
-								<option value="110">110</option>
-								<option value="120">120</option>
-								<option value="127">127</option>
-								<option value="135">135</option>
-							</select>
 						</FormGroup>
 						<Button color="primary" type="submit">Save</Button>
 					</Form>
@@ -47,5 +38,5 @@ export const HomeView = (props) => {
 				JSON.stringify(QueryString.parse(window.location.search), undefined, 2)
 			}</pre>
 		</Jumbotron>
-	)
-}
+	);
+};
