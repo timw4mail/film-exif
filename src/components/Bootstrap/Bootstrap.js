@@ -10,7 +10,7 @@ import Dropdown from 'inferno-bootstrap/dist/Dropdown';
 import DropdownItem from 'inferno-bootstrap/dist/DropdownItem';
 import DropdownMenu from 'inferno-bootstrap/dist/DropdownMenu';
 import DropdownToggle from 'inferno-bootstrap/dist/DropdownToggle';
-import Jumbotron from 'inferno-bootstrap/dist/Jumbotron';
+import BSJumbotron from 'inferno-bootstrap/dist/Jumbotron';
 import Pagination from 'inferno-bootstrap/dist/Pagination';
 import PaginationItem from 'inferno-bootstrap/dist/PaginationItem';
 import PaginationLink from 'inferno-bootstrap/dist/PaginationLink';
@@ -25,6 +25,14 @@ import TabPane from 'inferno-bootstrap/dist/TabPane';
 import Table from 'inferno-bootstrap/dist/Table';
 import Tooltip from 'inferno-bootstrap/dist/Tooltip';
 
+export const BSWrapper = (Component, tagName) => {
+	return ({children, ...props}) => (
+		<Component tag={tagName} {...props}>{children}</Component>
+	)
+}
+
+export const Jumbotron = BSWrapper(BSJumbotron, 'bs-jumbotron');
+
 export {
 	Alert,
 	Badge,
@@ -38,7 +46,6 @@ export {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-	Jumbotron,
 	Pagination,
 	PaginationItem,
 	PaginationLink,

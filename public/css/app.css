@@ -31,4 +31,10 @@ bs-container > * {
 	padding: 0.5em 1em;
 }
 
+bs-form-feedback,
+bs-form-group,
+bs-jumbotron {
+	display: block;
+}
+
 /*! Ids */

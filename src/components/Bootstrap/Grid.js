@@ -1,9 +1,8 @@
-import Col from 'inferno-bootstrap/dist/Col';
-import Container from 'inferno-bootstrap/dist/Container';
-import Row from 'inferno-bootstrap/dist/Row';
+import BSCol from 'inferno-bootstrap/dist/Col';
+import BSContainer from 'inferno-bootstrap/dist/Container';
+import BSRow from 'inferno-bootstrap/dist/Row';
+import { BSWrapper } from './Bootstrap'
 
-export {
-	Col,
-	Container,
-	Row,
-};
+export const Col = BSWrapper(BSCol, 'bs-col');
+export const Container = BSWrapper(BSContainer, 'bs-container');
+export const Row = BSWrapper(BSRow, 'bs-row');

@@ -1,7 +1,8 @@
+import { BSWrapper } from './Bootstrap';
 import Button from 'inferno-bootstrap/dist/Button';
 import Form from 'inferno-bootstrap/dist/Form/Form';
-import FormFeedback from 'inferno-bootstrap/dist/Form/FormFeedback';
-import FormGroup from 'inferno-bootstrap/dist/Form/FormGroup';
+import BSFormFeedback from 'inferno-bootstrap/dist/Form/FormFeedback';
+import BSFormGroup from 'inferno-bootstrap/dist/Form/FormGroup';
 import FormText from 'inferno-bootstrap/dist/Form/FormText';
 import Input from 'inferno-bootstrap/dist/Form/Input';
 import InputGroup from 'inferno-bootstrap/dist/Form/InputGroup';
@@ -10,11 +11,12 @@ import InputGroupButtonDropdown from 'inferno-bootstrap/dist/Form/InputGroupButt
 import InputGroupText from 'inferno-bootstrap/dist/Form/InputGroupText';
 import Label from 'inferno-bootstrap/dist/Form/Label';
 
+export const FormFeedback = BSWrapper(BSFormFeedback, 'bs-form-feedback');
+export const FormGroup = BSWrapper(BSFormGroup, 'bs-form-group');
+
 export {
 	Button,
 	Form,
-	FormFeedback,
-	FormGroup,
 	FormText,
 	Input,
 	InputGroup,

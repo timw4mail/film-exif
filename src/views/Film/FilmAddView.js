@@ -4,9 +4,6 @@ import {
 	Button,
 	Col,
 	Form,
-	FormGroup,
-	Input,
-	Label,
 	Row,
 } from '../../components/Bootstrap'
 
@@ -25,7 +22,7 @@ export class FilmAddView extends Component {
 		return (
 			<Form>
 				<Row>
-					<FormBlock 
+					<FormBlock
 						label="Brand"
 						name="brand"
 						required
