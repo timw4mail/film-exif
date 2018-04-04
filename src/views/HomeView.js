@@ -1,18 +1,26 @@
-import QueryString from 'query-string';
 import {
-	Button,
 	Container,
-	Form,
-	FormGroup,
-	Input,
 	Jumbotron,
-	Label,
 	Row,
 } from '../components/Bootstrap';
 
+function handleDrop (e) {
+	e.preventDefault();
+	e.stopPropagation();
+
+	for (const f of e.dataTransfer.files) {
+		console.log('Dragged files', f.path);
+	}
+}
+
+function handleDragOver (e) {
+	e.preventDefault();
+	e.stopPropagation();
+}
+
 export const HomeView = (props) => {
 	return (
-		<Jumbotron>
+		<Jumbotron onDrop={handleDrop} onDragover={handleDragOver}>
 			<Container className="App">
 				<Row>
 					<header className="App-header">
@@ -24,19 +32,7 @@ export const HomeView = (props) => {
 						To get started, edit <code>src/App.js</code> and save to reload.
 					</p>
 				</Row>
-				<Row>
-					<Form>
-						<FormGroup>
-							<Label tag="label" for="brand">Brand</Label>
-							<Input type="text" id="brand" name="brand" />
-						</FormGroup>
-						<Button color="primary" type="submit">Save</Button>
-					</Form>
-				</Row>
 			</Container>
-			<pre>{
-				JSON.stringify(QueryString.parse(window.location.search), undefined, 2)
-			}</pre>
 		</Jumbotron>
 	);
 };
