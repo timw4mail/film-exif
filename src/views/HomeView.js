@@ -24,12 +24,12 @@ export const HomeView = (props) => {
 			<Container className="App">
 				<Row>
 					<header className="App-header">
-						<h1>Welcome to Inferno</h1>
+						<h1>Welcome to Film Exif</h1>
 					</header>
 				</Row>
 				<Row>
 					<p className="App-intro">
-						To get started, edit <code>src/App.js</code> and save to reload.
+						Drop files here.
 					</p>
 				</Row>
 			</Container>

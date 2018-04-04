@@ -10,6 +10,8 @@ import {
 	Row,
 } from '../../components/Bootstrap'
 
+import { FormBlock } from '../../components';
+
 export class FilmAddView extends Component {
 	constructor (props) {
 		super (props);
@@ -23,24 +25,42 @@ export class FilmAddView extends Component {
 		return (
 			<Form>
 				<Row>
-					<Col md={12}>
-						<FormGroup>
-							<Label tag="label" for="brand">Brand</Label>
-							<Input type="text" id="brand" name="brand" />
-						</FormGroup>
-						<FormGroup>
-							<Label for="filmFormat">Film Format</Label>
-							<select className="custom-select" id="filmFormat" name="filmFormat">
-								<option value="110">110</option>
-								<option value="120">120</option>
-								<option value="127">127</option>
-								<option value="135">135</option>
-							</select>
-						</FormGroup>
-					</Col>
+					<FormBlock 
+						label="Brand"
+						name="brand"
+						required
+					/>
+					<FormBlock
+						label="Film Name"
+						name="film-name"
+						required
+					/>
+					<FormBlock
+						label="Film Speed (ISO)"
+						max="6400"
+						name="film-speed-asa"
+						required
+						type="number"
+					/>
+					<FormBlock
+						label="Film Speed (DIN)"
+						name="film-speed-din"
+						type="number"
+					/>
+					<FormBlock
+						label="Film Format"
+						name="film-format"
+					>
+						<select className="custom-select" id="film-format" name="film-format">
+							<option value="110">110</option>
+							<option value="120">120</option>
+							<option value="127">127</option>
+							<option value="135">135</option>
+						</select>
+					</FormBlock>
 				</Row>
 				<Row>
-					<Col md={12}>
+					<Col xs={12}>
 						<Button color="primary" type="submit">Save</Button>
 					</Col>
 				</Row>
