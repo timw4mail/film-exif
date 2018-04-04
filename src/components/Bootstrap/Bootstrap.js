@@ -1,4 +1,4 @@
-import Alert from 'inferno-bootstrap/dist/Alert';
+import BSAlert from 'inferno-bootstrap/dist/Alert';
 import Badge from 'inferno-bootstrap/dist/Badge';
 import Breadcrumb from 'inferno-bootstrap/dist/Breadcrumb';
 import BreadcrumbItem from 'inferno-bootstrap/dist/BreadcrumbItem';
@@ -31,10 +31,10 @@ export const BSWrapper = (Component, tagName) => {
 	)
 }
 
+export const Alert = BSWrapper(BSAlert, 'bs-alert');
 export const Jumbotron = BSWrapper(BSJumbotron, 'bs-jumbotron');
 
 export {
-	Alert,
 	Badge,
 	Breadcrumb,
 	BreadcrumbItem,

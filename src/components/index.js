@@ -1,2 +1,2 @@
 export * from './Bootstrap';
-export * from './FormBlock';
+export * from './Form';

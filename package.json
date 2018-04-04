@@ -26,7 +26,7 @@
   },
   "scripts": {
     "build": "inferno-scripts build",
-    "dist": "npm run build && build",
+    "dist": "yarn run build && build",
     "eject": "inferno-scripts eject",
     "electron-start": "node src/electron/wait-inferno",
     "electron": "electron .",

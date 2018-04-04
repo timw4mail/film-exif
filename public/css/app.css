@@ -31,6 +31,12 @@ bs-container > * {
 	padding: 0.5em 1em;
 }
 
+bs-card,
+bs-card-deck,
+bs-card-group,
+bs-card-header,
+bs-card-body,
+bs-card-footer,
 bs-form-feedback,
 bs-form-group,
 bs-jumbotron {

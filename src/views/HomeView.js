@@ -2,7 +2,7 @@ import {
 	Container,
 	Jumbotron,
 	Row,
-} from '../components/Bootstrap';
+} from 'components/Bootstrap';
 
 function handleDrop (e) {
 	e.preventDefault();

@@ -3,7 +3,7 @@ import {
 	FormGroup,
 	Input,
 	Label,
-} from './Bootstrap';
+} from 'components/Bootstrap';
 
 export const FormBlock = ({
 	children,
@@ -16,7 +16,7 @@ export const FormBlock = ({
 		: <Input id={props.name} name={props.name} type={type} {...props} />;
 
 	return (
-		<Col xs={12} sm={6} md={3}>
+		<Col xs={12} sm={6} md={3} className="d-flex align-items-baseline justify-content-around">
 			<FormGroup>
 				<Label for={props.name}>{label}</Label>
 				{formElement}
