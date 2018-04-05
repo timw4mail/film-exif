@@ -4035,6 +4035,10 @@ inferno-bootstrap@^5.0.0:
     lodash.isobject "^3.0.2"
     lodash.tonumber "^4.0.3"
 
+inferno-clone-vnode@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-clone-vnode/-/inferno-clone-vnode-5.0.2.tgz#02616a86767e1d0aa2f1aa5a6d14beb662935109"
+
 inferno-create-element@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-5.0.1.tgz#22f476a10b8112aa832e9228329e0ed373e5935f"
@@ -4074,14 +4078,15 @@ inferno-popper@^5.0.0:
     is-equal-shallow "^0.1.3"
     popper.js "^1.10.8"
 
-inferno-router@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-5.0.1.tgz#4097e7953772e9a0f3ffff876a702d05dd69c0f8"
+inferno-router@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-5.0.2.tgz#278dc64e9d2bce9975a8660756124b16c0faffa7"
   dependencies:
     history "^4.7.2"
     hoist-non-inferno-statics "^1.1.3"
-    inferno "5.0.1"
-    inferno-shared "5.0.1"
+    inferno "5.0.2"
+    inferno-clone-vnode "5.0.2"
+    inferno-shared "5.0.2"
     path-to-regexp-es6 "1.7.0"
 
 inferno-scripts@6.3.0:
@@ -4132,11 +4137,27 @@ inferno-shared@5.0.1, inferno-shared@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-5.0.1.tgz#2f7ebdc36312afa4a9ef48b8aa71c3aa9be2068a"
 
+inferno-shared@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-5.0.2.tgz#deab19bd0b78f0b6f653b541c9a070209a0af8a6"
+
 inferno-vnode-flags@5.0.1, inferno-vnode-flags@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-5.0.1.tgz#fbb377070ee9d2bd93978a6faa58cae15dd746b0"
 
-inferno@5.0.1, inferno@^5.0.1:
+inferno-vnode-flags@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-5.0.2.tgz#fe5eab4c5dfd953cc5c144ed6cb8b0a42fd2cbd9"
+
+inferno@5.0.2, inferno@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-5.0.2.tgz#d1cef3876f40b57e1ba6a58846c83df4f77ea18f"
+  dependencies:
+    inferno-shared "5.0.2"
+    inferno-vnode-flags "5.0.2"
+    opencollective "^1.0.3"
+
+inferno@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/inferno/-/inferno-5.0.1.tgz#dee61c256629cce3b263bb2ec7175813a702be08"
   dependencies:

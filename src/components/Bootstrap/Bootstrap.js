@@ -28,8 +28,8 @@ import Tooltip from 'inferno-bootstrap/dist/Tooltip';
 export const BSWrapper = (Component, tagName) => {
 	return ({children, ...props}) => (
 		<Component tag={tagName} {...props}>{children}</Component>
-	)
-}
+	);
+};
 
 export const Alert = BSWrapper(BSAlert, 'bs-alert');
 export const Jumbotron = BSWrapper(BSJumbotron, 'bs-jumbotron');
