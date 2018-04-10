@@ -16,7 +16,7 @@ export const FormBlock = ({
 		: <Input id={props.name} name={props.name} type={type} {...props} />;
 
 	return (
-		<Col xs={12} sm={6} md={3} className="d-flex align-items-baseline justify-content-around">
+		<Col xs={12} md={6} xl={4} className="d-flex align-items-baseline justify-content-around">
 			<FormGroup>
 				<Label for={props.name}>{label}</Label>
 				{formElement}

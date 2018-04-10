@@ -4145,16 +4145,28 @@ inferno-shared@5.0.3, inferno-shared@^5.0.1:
   version "5.0.3"
   resolved "https://registry.npmjs.org/inferno-shared/-/inferno-shared-5.0.3.tgz#dc9d437e1fb783c7669135d81027d5cc972a5d9b"
 
-inferno-vnode-flags@5.0.3, inferno-vnode-flags@^5.0.1:
+inferno-vnode-flags@5.0.3:
   version "5.0.3"
   resolved "https://registry.npmjs.org/inferno-vnode-flags/-/inferno-vnode-flags-5.0.3.tgz#87145797e54b32bb4e18461de1cb0eb34117a765"
 
-inferno@5.0.3, inferno@^5.0.1:
+inferno-vnode-flags@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-5.0.1.tgz#fbb377070ee9d2bd93978a6faa58cae15dd746b0"
+
+inferno@5.0.3:
   version "5.0.3"
   resolved "https://registry.npmjs.org/inferno/-/inferno-5.0.3.tgz#7349411364b238b3a3186b697b241c12f7d37f34"
   dependencies:
     inferno-shared "5.0.3"
     inferno-vnode-flags "5.0.3"
+    opencollective "^1.0.3"
+
+inferno@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-5.0.1.tgz#dee61c256629cce3b263bb2ec7175813a702be08"
+  dependencies:
+    inferno-shared "5.0.1"
+    inferno-vnode-flags "5.0.1"
     opencollective "^1.0.3"
 
 inflight@^1.0.4:
