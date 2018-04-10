@@ -1,5 +1,9 @@
-const { app, dialog } = require('electron');
+//const fs = require('fs');
+const { /* app, dialog, */ ipcMain } = require('electron');
+// const { ExifTool } = require('exiftool-vendored');
 
-app.on('foo', () => {});
+// const exiftool = new ExifTool();
 
-console.log(dialog);
+ipcMain.on('dropped-files', () => {
+
+});
