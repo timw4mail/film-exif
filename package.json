@@ -1,6 +1,6 @@
 {
   "name": "film-exif-electron",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "dotenv": "5.0.1",
@@ -91,10 +91,6 @@
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
     ],
-    "moduleNameMapper": {
-      "^react$": "inferno-compat",
-      "^react-dom$": "inferno-compat"
-    },
     "moduleFileExtensions": [
       "web.js",
       "mjs",
