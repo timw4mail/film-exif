@@ -3,7 +3,7 @@ import {
 	FormGroup,
 	Input,
 	Label,
-} from 'components/Bootstrap';
+} from '../Bootstrap';
 
 export const FormBlock = ({
 	children,

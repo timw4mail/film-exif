@@ -10,7 +10,7 @@ import InputGroupButtonDropdown from 'inferno-bootstrap/dist/Form/InputGroupButt
 import InputGroupText from 'inferno-bootstrap/dist/Form/InputGroupText';
 import Label from 'inferno-bootstrap/dist/Form/Label';
 
-import { BSWrapper } from 'components/Bootstrap';
+import { BSWrapper } from './Bootstrap';
 
 export const FormFeedback = BSWrapper(BSFormFeedback, 'bs-form-feedback');
 export const FormGroup = BSWrapper(BSFormGroup, 'bs-form-group');

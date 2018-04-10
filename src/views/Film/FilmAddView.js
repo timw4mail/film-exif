@@ -10,9 +10,9 @@ import {
 	Col,
 	Form,
 	Row,
-} from 'components/Bootstrap';
+} from '../../components/Bootstrap';
 
-import { FormBlock } from 'components/Form';
+import { FormBlock } from '../../components/Form';
 
 export class FilmAddView extends Component {
 	constructor (props) {

@@ -12,7 +12,7 @@ import CardSubtitle from 'inferno-bootstrap/dist/Card/CardSubtitle';
 import CardText from 'inferno-bootstrap/dist/Card/CardText';
 import CardTitle from 'inferno-bootstrap/dist/Card/CardTitle';
 
-import { BSWrapper } from 'components/Bootstrap';
+import { BSWrapper } from './Bootstrap';
 
 export const Card = BSWrapper(BSCard, 'bs-card');
 export const CardBody = BSWrapper(BSCardBody, 'bs-card-body');
