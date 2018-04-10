@@ -59,10 +59,10 @@
     "dist": "yarn run build && build",
     "electron-start": "node src/electron/wait-inferno",
     "electron": "electron .",
-    "fix": "set NODE_DIR=src/ eslint --fix src/**/*.js",
-    "lint": "set NODE_DIR=src/ eslint src/**/*.js",
+    "fix": "eslint --fix src/**/*.js",
+    "lint": "eslint src/**/*.js",
     "pack": "build --dir",
-    "postinstall": "set NODE_DIR=src/ electron-builder install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "precommit": "yarn lint",
     "react-start": "node scripts/start.js",
     "start": "nf start -p 3000",
@@ -78,8 +78,7 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/__tests__/**/*.{js,jsx,mjs}"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
