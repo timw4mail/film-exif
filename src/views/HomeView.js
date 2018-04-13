@@ -8,6 +8,9 @@ function handleDrop (e) {
 	e.preventDefault();
 	e.stopPropagation();
 
+	// console.log(e.dataTransfer.files);
+	window.clientWS.send('dropped-files', e.dataTransfer.files);
+
 	for (const f of e.dataTransfer.files) {
 		console.log('Dragged files', f.path);
 	}

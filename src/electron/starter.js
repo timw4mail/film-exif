@@ -4,6 +4,8 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
+const WS = require('isomorphic-ws');
+
 const path = require('path');
 const url = require('url');
 
@@ -31,9 +33,9 @@ const createWindow = () => {
 	});
 	mainWindow.loadURL(startUrl);
 	// Open the DevTools.
-	/* mainWindow.webContents.openDevTools({
+	mainWindow.webContents.openDevTools({
 		mode: 'bottom',
-	}); */
+	});
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', () => {
@@ -66,6 +68,10 @@ app.on('activate', () => {
 	}
 });
 
+const wss = new WS.Server({
+	port: 65432,
+});
+
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-require('./events');
+require('./websocket-events')(wss);
