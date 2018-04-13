@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "@stdlib/stdlib": "^0.0.35",
     "dotenv": "5.0.1",
     "dotenv-expand": "4.2.0",
     "exiftool-vendored": "^4.20.0",
