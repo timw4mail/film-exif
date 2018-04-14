@@ -1,13 +1,12 @@
-const electron = require('electron');
-// Module to control application life.
-const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
+const {app, BrowserWindow} = require('electron');
+const log = require('electron-log');
 
-const WS = require('isomorphic-ws');
+log.transports.file.level = false;
+log.transports.console.level = 'info';
 
 const path = require('path');
 const url = require('url');
+const WS = require('isomorphic-ws');
 
 // eslint-disable-next-line
 global.eval = () => {};
@@ -51,6 +50,10 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
 
+app.on('browser-window-created', () => {
+	log.info('New browser window created');
+});
+
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
 	// On OS X it is common for applications and their menu bar
@@ -71,7 +74,6 @@ app.on('activate', () => {
 const wss = new WS.Server({
 	port: 65432,
 });
-
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 require('./websocket-events')(wss);

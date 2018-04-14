@@ -45,7 +45,16 @@ export class App extends Component {
 			webSocketLoaded: true,
 		});
 
-		window.clientWS.onmessage = console.info;
+		window.clientWS.onmessage = message => {
+			console.info(message);
+			console.info(message.data);
+
+			console.info(JSON.parse(message.data));
+			// const fr = new FileReader();
+			// fr.readAsArrayBuffer(message.data);
+
+			// console.info(fr.result);
+		};
 
 		console.info(window.clientWS);
 	}

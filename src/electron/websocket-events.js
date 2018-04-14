@@ -1,13 +1,18 @@
 /**
  * Websocket event handlers
  */
+const {JSONMessage} = require('../helpers/web-socket');
 
 module.exports = (wss) => {
-	wss.on('open', ws => {
-		wss.send('server-log', 'Connected to client!');
+	wss.on('connection', ws => {
+		ws.send(JSONMessage('server-log', 'Connected to client!'));
 
-		wss.on('dropped-files', e => {
-			wss.send('recieved-dropped-files', e);
+		ws.on('message', (...args) => {
+			console.info(args);
+		});
+
+		ws.on('dropped-files', e => {
+			ws.send(JSONMessage('recieved-dropped-files', e));
 		});
 	});
 };

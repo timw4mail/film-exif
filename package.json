@@ -6,6 +6,7 @@
     "@stdlib/stdlib": "^0.0.35",
     "dotenv": "5.0.1",
     "dotenv-expand": "4.2.0",
+    "electron-log": "^2.2.14",
     "exiftool-vendored": "^4.20.0",
     "inferno": "^5.0.1",
     "inferno-bootstrap": "^5.0.0",
@@ -62,8 +63,8 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "dist": "yarn run build && build",
-    "electron-start": "node src/electron/wait-inferno",
+		"dist": "yarn run build && build",
+		"electron-start": "node src/electron/wait-inferno",
     "electron": "electron .",
     "fix": "eslint --fix src/**/*.js",
     "lint": "eslint src/**/*.js",

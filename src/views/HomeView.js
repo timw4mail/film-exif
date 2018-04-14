@@ -3,17 +3,19 @@ import {
 	Jumbotron,
 	Row,
 } from '../components/Bootstrap';
+import { JSONMessage } from '../helpers/web-socket';
 
 function handleDrop (e) {
 	e.preventDefault();
 	e.stopPropagation();
 
-	// console.log(e.dataTransfer.files);
-	window.clientWS.send('dropped-files', e.dataTransfer.files);
-
+	const draggedFiles = [];
 	for (const f of e.dataTransfer.files) {
 		console.log('Dragged files', f.path);
+		draggedFiles.push(f.path);
 	}
+
+	window.clientWS.send(JSONMessage('dropped-files', draggedFiles));
 }
 
 function handleDragOver (e) {
