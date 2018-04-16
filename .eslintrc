@@ -38,6 +38,7 @@
 		}],
 		"prefer-const": "error",
 		"no-alert": "error",
+		"no-case-declarations": "off",
 		"no-console": "off",
 		"no-duplicate-imports": "error",
 		"no-eval": "error",

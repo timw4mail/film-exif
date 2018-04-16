@@ -11,7 +11,6 @@ function handleDrop (e) {
 
 	const draggedFiles = [];
 	for (const f of e.dataTransfer.files) {
-		console.log('Dragged files', f.path);
 		draggedFiles.push(f.path);
 	}
 
