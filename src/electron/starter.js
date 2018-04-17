@@ -6,7 +6,9 @@ log.transports.console.level = 'info';
 
 const path = require('path');
 const url = require('url');
-const WS = require('isomorphic-ws');
+
+// eslint-disable-next-line
+const WebSocket = require('ws');
 
 // eslint-disable-next-line
 global.eval = () => {};
@@ -71,9 +73,17 @@ app.on('activate', () => {
 	}
 });
 
-const wss = new WS.Server({
+const wss = new WebSocket.Server({
+	perMessageDeflate: false,
 	port: 65432,
 });
+wss.broadcast = (data) => {
+	wss.clients.forEach(client => {
+		if (client.readyState === WebSocket.OPEN) {
+			client.send(data);
+		}
+	});
+};
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 require('./websocket-events')(wss);

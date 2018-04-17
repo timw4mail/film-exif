@@ -9,18 +9,16 @@ const exiftool = new ExifTool();
 module.exports = (wss) => {
 	wss.on('connection', ws => {
 		ws.send(JSONMessage('server-log', 'Connected to client!'));
-
 		ws.on('message', (...args) => {
 			const [type, message] = JSON.parse(args);
 			switch (type) {
 				case 'dropped-files':
-					const filemap = [];
-					message.forEach(async file => {
+					const filemap = message.map(async file => {
 						const tags = await getExifTags(file);
-						console.info(tags);
-						filemap[file] = tags;
+						// console.info('Parsed tags', JSON.stringify(tags));
+						return JSON.parse(JSON.stringify(tags));
 					});
-					ws.send(JSONMessage('parsed-exif-tags', filemap));
+					wss.broadcast(JSONMessage('parsed-exif-tags', filemap));
 					break;
 
 				default:
@@ -30,6 +28,6 @@ module.exports = (wss) => {
 	});
 };
 
-function getExifTags (imgPath) {
-	return exiftool.read(imgPath);
+async function getExifTags (imgPath) {
+	await exiftool.read(imgPath);
 }

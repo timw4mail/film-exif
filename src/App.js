@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 import { Component } from 'inferno';
 import { BrowserRouter, Link, NavLink } from 'inferno-router';
-import WS from 'isomorphic-ws';
 import { Loader } from './components';
 import {
 	Container,
@@ -27,7 +26,7 @@ export class App extends Component {
 	}
 
 	componentDidMount () {
-		window.clientWS = new WS('ws://localhost:65432/');
+		window.clientWS = new WebSocket('ws://localhost:65432/');
 
 		window.clientWS.addEventListener('open', this.onWebSocketOpen);
 		window.clientWS.addEventListener('message', console);

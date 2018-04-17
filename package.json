@@ -12,7 +12,6 @@
     "inferno-bootstrap": "^5.0.0",
     "inferno-dev-utils": "^5.3.0",
     "inferno-router": "^5.0.1",
-    "isomorphic-ws": "^4.0.0",
     "lodash": "^4.17.5",
     "ws": "^5.1.1"
   },
@@ -63,8 +62,8 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-		"dist": "yarn run build && build",
-		"electron-start": "node src/electron/wait-inferno",
+    "dist": "yarn run build && build",
+    "electron-start": "node src/electron/wait-inferno",
     "electron": "electron .",
     "fix": "eslint --fix src/**/*.js",
     "lint": "eslint src/**/*.js",
