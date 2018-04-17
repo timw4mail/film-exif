@@ -1,33 +1,38 @@
+const {getExifTags} = require('./exif-helpers');
 /**
  * Websocket event handlers
  */
-const {ExifTool} = require('exiftool-vendored');
 const {JSONMessage} = require('../helpers/web-socket');
+// eslint-disable-next-line
+const WebSocket = require('ws');
 
-const exiftool = new ExifTool();
+const wss = new WebSocket.Server({
+	perMessageDeflate: false,
+	port: 65432,
+});
 
-module.exports = (wss) => {
-	wss.on('connection', ws => {
-		ws.send(JSONMessage('server-log', 'Connected to client!'));
-		ws.on('message', (...args) => {
-			const [type, message] = JSON.parse(args);
-			switch (type) {
-				case 'dropped-files':
-					const filemap = message.map(async file => {
-						const tags = await getExifTags(file);
-						// console.info('Parsed tags', JSON.stringify(tags));
-						return JSON.parse(JSON.stringify(tags));
-					});
-					wss.broadcast(JSONMessage('parsed-exif-tags', filemap));
-					break;
-
-				default:
-					return ws.send(JSONMessage('server-log', [type, message]));
-			}
-		});
+wss.broadcast = (data) => {
+	wss.clients.forEach(client => {
+		if (client.readyState === WebSocket.OPEN) {
+			client.send(data);
+		}
 	});
 };
 
-async function getExifTags (imgPath) {
-	await exiftool.read(imgPath);
-}
+wss.on('connection', ws => {
+	ws.send(JSONMessage('server-log', 'Connected to client!'));
+	ws.on('message', async (...args) => {
+		const [type, message] = JSON.parse(args);
+		switch (type) {
+			case 'dropped-files':
+				const filemap = await Promise.all(
+					message.map(file => getExifTags(file))
+				);
+				wss.broadcast(JSONMessage('parsed-exif-tags', await filemap));
+				break;
+
+			default:
+				return ws.send(JSONMessage('server-log', [type, message]));
+		}
+	});
+});
