@@ -1,4 +1,6 @@
 import {
+	Button,
+	Col,
 	Container,
 	Jumbotron,
 	Row,
@@ -22,6 +24,21 @@ function handleDragOver (e) {
 	e.stopPropagation();
 }
 
+function showOpenDialog () {
+	window.clientWS.send(JSONMessage('show-open-dialog', {}));
+}
+
+function showSaveDialog () {
+	window.clientWS.send(JSONMessage('show-save-dialog', {}));
+}
+
+function showErrorDialog () {
+	window.clientWS.send(JSONMessage(
+		'show-error-box',
+		'Looks like there was a problem. (╥﹏╥) \n (╯°□°）╯︵ ┻━┻'
+	));
+}
+
 export const HomeView = (props) => {
 	return (
 		<Jumbotron onDrop={handleDrop} onDragover={handleDragOver}>
@@ -35,6 +52,17 @@ export const HomeView = (props) => {
 					<p className="App-intro">
 						Drop files here.
 					</p>
+				</Row>
+				<Row>
+					<Col md={4}>
+						<Button onClick={showOpenDialog}>Show Open Dialog</Button>
+					</Col>
+					<Col md={4}>
+						<Button onClick={showSaveDialog}>Show Save Dialog</Button>
+					</Col>
+					<Col md={4}>
+						<Button onClick={showErrorDialog}>Show Error Dialog</Button>
+					</Col>
 				</Row>
 			</Container>
 		</Jumbotron>

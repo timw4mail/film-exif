@@ -1,10 +1,12 @@
-const {getExifTags} = require('./exif-helpers');
 /**
  * Websocket event handlers
  */
-const {JSONMessage} = require('../helpers/web-socket');
+const {dialog, BrowserWindow} = require('electron');
 // eslint-disable-next-line
 const WebSocket = require('ws');
+
+const {getExifTags} = require('./exif-helpers');
+const {JSONMessage} = require('../helpers/web-socket');
 
 const wss = new WebSocket.Server({
 	perMessageDeflate: false,
@@ -22,17 +24,47 @@ wss.broadcast = (data) => {
 wss.on('connection', ws => {
 	ws.send(JSONMessage('server-log', 'Connected to client!'));
 	ws.on('message', async (...args) => {
-		const [type, message] = JSON.parse(args);
-		switch (type) {
-			case 'dropped-files':
-				const filemap = await Promise.all(
-					message.map(file => getExifTags(file))
-				);
-				wss.broadcast(JSONMessage('parsed-exif-tags', await filemap));
-				break;
+		try {
+			const [type, message] = JSON.parse(args);
+			switch (type) {
+				case 'dropped-files':
+					const filemap = await Promise.all(
+						message.map(file => getExifTags(file))
+					);
+					wss.broadcast(JSONMessage('parsed-exif-tags', await filemap));
+					break;
 
-			default:
-				return ws.send(JSONMessage('server-log', [type, message]));
+				case 'show-open-dialog':
+					const files = dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), {
+						filters: [{
+							extension: ['jpg', 'jpeg', 'tif', 'tiff', 'dng'],
+							name: 'EXIF image types',
+						}, {
+							extensions: ['*'],
+							name: 'All Files',
+						}],
+						properties: [
+							'openFile',
+							'multiSelections',
+						],
+					});
+					wss.broadcast(JSONMessage('selected-files', files));
+					break;
+
+				case 'show-save-dialog':
+					const saveFile = dialog.showSaveDialog(BrowserWindow.getFocusedWindow());
+					wss.broadcast(JSONMessage('save-file-location', saveFile));
+					break;
+
+				case 'show-error-box':
+					dialog.showErrorBox('An Error has Occured',	message);
+					break;
+
+				default:
+					return ws.send(JSONMessage('server-log', [type, message]));
+			}
+		} catch (e) {
+			console.info(args);
 		}
 	});
 });
