@@ -1,7 +1,7 @@
-const {app, BrowserWindow} = require('electron');
-const log = require('electron-log');
-const path = require('path');
-const url = require('url');
+import {app, BrowserWindow} from 'electron';
+import log from 'electron-log';
+import path from 'path';
+import url from 'url';
 
 log.transports.file.level = false;
 log.transports.console.level = 'info';

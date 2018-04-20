@@ -1,12 +1,12 @@
 /**
  * Websocket event handlers
  */
-const {dialog, BrowserWindow} = require('electron');
+import {dialog, BrowserWindow} from 'electron';
 // eslint-disable-next-line
-const WebSocket = require('ws');
+import WebSocket from 'ws';
 
-const {getExifTags} = require('./exif-helpers');
-const {JSONMessage} = require('../helpers/web-socket');
+import {getExifTags} from './exif-helpers';
+import {JSONMessage} from '../helpers/web-socket';
 
 const wss = new WebSocket.Server({
 	perMessageDeflate: false,

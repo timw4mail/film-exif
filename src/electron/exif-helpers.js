@@ -1,4 +1,4 @@
-const {ExifTool} = require('exiftool-vendored');
+import {ExifTool} from 'exiftool-vendored';
 const exiftool = new ExifTool();
 
 /**
@@ -11,6 +11,6 @@ function getExifTags (imgPath) {
 	return exiftool.read(imgPath);
 }
 
-module.exports = {
+export {
 	getExifTags,
 };
