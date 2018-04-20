@@ -31,6 +31,8 @@ export class App extends Component {
 		window.clientWS.addEventListener('open', this.onWebSocketOpen);
 		window.clientWS.addEventListener('message', console);
 		window.clientWS.addEventListener('close', this.onWebSocketClose);
+
+		console.info(this.context);
 	}
 
 	componentWillUnmount () {
