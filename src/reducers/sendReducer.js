@@ -5,7 +5,7 @@
  * @param {object} action
  * @return {object} newState
  */
-export const wsReducer = (state = {}, action) => {
+export const sendReducer = (state = {}, action) => {
 	switch (action.type) {
 		default:
 			return state;

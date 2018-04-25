@@ -1,1 +1,2 @@
-export * from './wsReducer';
+export * from './receiveReducer';
+export * from './sendReducer';
