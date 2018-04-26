@@ -15,6 +15,7 @@
     "inferno-redux": "^5.0.4",
     "inferno-router": "^5.0.1",
     "lodash": "^4.17.5",
+    "ramda": "^0.25.0",
     "redux": "^4.0.0",
     "ws": "^5.1.1"
   },
@@ -108,5 +109,9 @@
     "presets": [
       "inferno-app"
     ]
+  },
+  "peerDependencies": {
+    "bootstrap": "4",
+    "jquery": "^3.3.1"
   }
 }

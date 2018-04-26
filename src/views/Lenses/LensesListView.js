@@ -1,3 +1,3 @@
 export const LensesListView = () => {
-	return <div />
+	return <div />;
 };
