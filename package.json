@@ -3,7 +3,6 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@stdlib/stdlib": "^0.0.36",
     "dotenv": "5.0.1",
     "dotenv-expand": "4.2.0",
     "electron-log": "^2.2.14",
@@ -45,7 +44,6 @@
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.11",
-    "foreman": "^2.0.0",
     "fs-extra": "5.0.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^0.14.3",
