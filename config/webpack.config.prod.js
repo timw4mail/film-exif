@@ -1,6 +1,5 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -148,7 +147,6 @@ module.exports = {
             },
           },
           // The notation here is somewhat confusing.
-          // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader normally turns CSS into JS modules injecting <style>,
           // but unlike in development configuration, we do something different.
@@ -187,15 +185,6 @@ module.exports = {
                         ident: 'postcss',
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
-                          autoprefixer({
-                            browsers: [
-                              '>1%',
-                              'last 4 versions',
-                              'Firefox ESR',
-                              'not ie < 11',
-                            ],
-                            flexbox: 'no-2009',
-                          }),
                         ],
                       },
                     },
