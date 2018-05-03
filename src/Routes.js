@@ -5,7 +5,7 @@ import {
 	FilmAddView,
 	HomeView,
 	OopsView,
-} from '~/src/views';
+} from '//views';
 
 export const Routes = (props) => (
 	<Switch>

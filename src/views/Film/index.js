@@ -1,1 +1,1 @@
-export * from './FilmAddView';
+export * from '//views/Film/FilmAddView';

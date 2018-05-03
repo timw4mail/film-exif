@@ -1,4 +1,4 @@
-import { Alert, Row } from '../components/Bootstrap';
+import { Alert, Row } from '//components/Bootstrap';
 
 export const OopsView = (props) => (
 	<Row className="align-items-center justify-content-center full-height">

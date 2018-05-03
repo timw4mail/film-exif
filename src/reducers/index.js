@@ -1,2 +1,2 @@
-export * from './receiveReducer';
-export * from './sendReducer';
+export * from '//reducers/receiveReducer';
+export * from '//reducers/sendReducer';

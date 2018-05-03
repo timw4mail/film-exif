@@ -1,15 +1,15 @@
 import * as _ from 'lodash';
 import { Component } from 'inferno';
 import { BrowserRouter, Link, NavLink } from 'inferno-router';
-import { Loader } from './components';
+import { Loader } from '//components';
 import {
 	Container,
 	Nav,
 	Navbar,
 	NavbarBrand,
 	NavItem,
-} from './components/Bootstrap';
-import { Routes } from './Routes';
+} from '//components/Bootstrap';
+import { Routes } from '//Routes';
 
 export class App extends Component {
 	constructor (props) {
@@ -43,7 +43,7 @@ export class App extends Component {
 
 	onWebSocketOpen () {
 		this.setState({
-			webSocketLoaded: true,
+			webSocketLoaded: true
 		});
 
 		window.clientWS.onmessage = message => {

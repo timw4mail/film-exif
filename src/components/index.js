@@ -1,3 +1,3 @@
-export * from './Bootstrap';
-export * from './Form';
-export * from './Loader';
+export * from '//components/Bootstrap';
+export * from '//components/Form';
+export * from '//components/Loader';

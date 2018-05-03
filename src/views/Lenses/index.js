@@ -1,1 +1,1 @@
-export * from './LensesListView';
+export * from '//views/Lenses/LensesListView';

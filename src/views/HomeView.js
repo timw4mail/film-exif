@@ -10,8 +10,8 @@ import {
 	ModalFooter,
 	ModalHeader,
 	Row,
-} from '../components/Bootstrap';
-import { JSONMessage } from '../helpers/web-socket';
+} from '//components/Bootstrap';
+import { JSONMessage } from '//helpers/web-socket';
 
 export class HomeView extends Component {
 	constructor (props) {
