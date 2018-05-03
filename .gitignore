@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/osx,vim,code,node,linux,emacs,windows,jetbrains+all
 
+.cache/
+
 ### Code ###
 # Visual Studio Code - https://code.visualstudio.com/
 .settings/

@@ -1,12 +1,17 @@
 import { Route, Switch } from 'inferno-router';
 
-import * as V from './views';
+import {
+	CameraAddView,
+	FilmAddView,
+	HomeView,
+	OopsView,
+} from '~/src/views';
 
 export const Routes = (props) => (
 	<Switch>
-		<Route exact path="/" component={V.HomeView} />
-		<Route path="/camera" component={V.CameraAddView} />
-		<Route path="/film" component={V.FilmAddView} />
-		<Route component={V.OopsView} />
+		<Route exact path="/" component={HomeView} />
+		<Route path="/camera" component={CameraAddView} />
+		<Route path="/film" component={FilmAddView} />
+		<Route component={OopsView} />
 	</Switch>
 );
