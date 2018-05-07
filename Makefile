@@ -1,10 +1,15 @@
 all: node_modules
 
+build: node_modules
+	yarn dist
+
 clean:
 	rm -rf ./.cache
-	rm -rf ./node_modules
 	rm -rf ./dist
 	rm -rf ./build
+
+clean-all: clean
+	rm -rf ./node_modules
 
 node_modules:
 	yarn --ignore-engines
@@ -12,8 +17,11 @@ node_modules:
 electron-start: node_modules
 	yarn electron-start
 
+inferno-start: node_modules
+	yarn inferno-start
+
 react-start: node_modules
-	yarn react-start
+	yarn inferno-start
 
 fix: node_modules
 	yarn fix

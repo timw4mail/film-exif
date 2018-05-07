@@ -1,6 +1,5 @@
 import { Component } from 'inferno';
 import {
-	Alert,
 	Button,
 	Col,
 	Container,
@@ -38,6 +37,9 @@ export class HomeView extends Component {
 			draggedFiles.push(f.path);
 		}
 
+		let newTransfer = { ...e.dataTransfer };
+		console.info(newTransfer);
+
 		window.clientWS.send(JSONMessage('dropped-files', draggedFiles));
 	}
 
@@ -65,9 +67,6 @@ export class HomeView extends Component {
 	render () {
 		return (
 			<main>
-				<Alert color="info">
-					This is a work in progress
-				</Alert>
 				<Jumbotron onDrop={this.handleDrop} onDragover={this.handleDragOver}>
 					<Container className="App">
 						<Row>
