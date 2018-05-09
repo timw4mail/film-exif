@@ -37,7 +37,7 @@ export class HomeView extends Component {
 			draggedFiles.push(f.path);
 		}
 
-		let newTransfer = { ...e.dataTransfer };
+		const newTransfer = { ...e.dataTransfer };
 		console.info(newTransfer);
 
 		window.clientWS.send(JSONMessage('dropped-files', draggedFiles));

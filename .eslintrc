@@ -27,7 +27,7 @@
 			"properties": "never"
 		}],
 		"comma-dangle": ["error", "always-multiline"],
-		"import/extensions": "off",
+		"import/extensions": "on",
 		"import/no-extraneous-dependencies": "off",
 		"import/no-unresolved": [2, { "ignore": ["electron"] }],
 		"jsx-quotes": ["error", "prefer-double"],
@@ -82,5 +82,10 @@
 		"require-await": "error",
 		"sort-keys": ["error", "asc", {"caseSensitive": true, "natural": true}],
 		"yoda": ["error", "never"]
+	},
+	"settings": {
+		"import/resolver": {
+			"babel-module": {}
+		}
 	}
 }

@@ -11,19 +11,22 @@ clean:
 clean-all: clean
 	rm -rf ./node_modules
 
-node_modules:
-	yarn --ignore-engines
-
 electron-start: node_modules
 	yarn electron-start
-
-inferno-start: node_modules
-	yarn inferno-start
-
-react-start: node_modules
-	yarn inferno-start
 
 fix: node_modules
 	yarn fix
 
-.PHONY: all clean fix electron-start react-start
+inferno-start: node_modules
+	yarn inferno-start
+
+lint: node_modules
+	yarn lint
+
+node_modules:
+	yarn --ignore-engines
+
+react-start: node_modules
+	yarn inferno-start
+
+.PHONY: all clean electron-start fix lint react-start

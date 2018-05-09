@@ -33,6 +33,7 @@
     "eslint": "^4.19.1",
     "eslint-config-happiness": "^10.2.1",
     "eslint-config-inferno-app": "^6.2.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-loader": "2.0.0",
     "eslint-plugin-flowtype": "^2.46.3",
     "eslint-plugin-import": "^2.10.0",
