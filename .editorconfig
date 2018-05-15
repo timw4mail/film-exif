@@ -11,6 +11,10 @@ indent_size = 2
 indent_style = tab
 insert_final_newline = true
 
+[package.json]
+indent_size = 2
+indent_style = space
+
 # If i ever MUST use a yaml file
 [*.yml, *.yaml]
 indent_size = 2
