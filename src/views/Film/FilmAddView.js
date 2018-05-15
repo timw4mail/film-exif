@@ -14,6 +14,16 @@ import {
 
 import { FormBlock } from '//components/Form';
 
+/*
+ * Fields from AnalogExif
+ *
+ * Manufacturer
+ * Name
+ * Alias
+ * Grain
+ * ISO Rating
+ */
+
 export class FilmAddView extends Component {
 	constructor (props) {
 		super(props);

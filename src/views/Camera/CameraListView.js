@@ -1,3 +1,5 @@
 export const CameraListView = () => {
-	return <div />;
+	return (
+		<div />
+	);
 };

@@ -14,6 +14,17 @@ import {
 
 import { FormBlock } from '//components/Form';
 
+/*
+ * Fields from AnalogExif
+ *
+ * Manufacturer
+ * Model
+ * Serial Number
+ * Film Format
+ * Flash Manufacturer
+ * Flash Model
+ */
+
 export class CameraAddView extends Component {
 	constructor (props) {
 		super(props);
@@ -62,15 +73,26 @@ export class CameraAddView extends Component {
 										value={this.state.form.values['model']}
 									/>
 									<FormBlock
+										label="Serial"
+										name="serial"
+										required
+										value={this.state.form.values['serial']}
+									/>
+									<FormBlock
 										label="Film Format"
 										name="film-format"
 										value={this.state.form.values['film-format']}
 									>
-										<select className="custom-select" id="film-format" name="film-format">
+										<select
+											className="custom-select"
+											id="film-format"
+											name="film-format"
+										>
 											<option value="110">110</option>
 											<option value="120">120</option>
 											<option value="127">127</option>
 											<option value="135">135</option>
+											<option value="220">220</option>
 										</select>
 									</FormBlock>
 								</Row>
