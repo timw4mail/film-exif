@@ -5,9 +5,9 @@ export class wsCache {
 	constructor (ws) {
 		this.ws = ws
 
-		this.ws.addEventListener('open', this.onWebSocketOpen);
 		this.ws.addEventListener('message', this.onWebSocketMessage);
 		this.ws.addEventListener('close', this.onWebSocketClose);
+		this.ws.addEventListener('error', console.error);
 
 		// Websocket channels
 		// These hold previous messages if they are needed later
@@ -26,7 +26,6 @@ export class wsCache {
 		}
 
 		_.bindAll(this, [
-			'onWebSocketOpen',
 			'onWebSocketClose',
 			'onWebSocketMessage',
 			'publish',
@@ -34,10 +33,6 @@ export class wsCache {
 			'sendJSON',
 			'subscribe',
 		])
-	}
-
-	onWebSocketOpen () {
-		window.wsCache.publish('default', 'Websocket opened');
 	}
 
 	onWebSocketClose () {
@@ -76,8 +71,6 @@ export class wsCache {
 		this.listeners[slot].forEach(listener => {
 			listener(data)
 		});
-
-		console.info(this.slots);
 	}
 
 	/**

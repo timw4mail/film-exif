@@ -4030,6 +4030,13 @@ inferno-popper@^5.0.0:
     is-equal-shallow "^0.1.3"
     popper.js "^1.10.8"
 
+inferno-redux@^5.0.6:
+  version "5.0.6"
+  resolved "https://verdaccio.blueclouds.io:4873/inferno-redux/-/inferno-redux-5.0.6.tgz#41214f3c3df2e75cc873f356f353e44e4b9c1c59"
+  dependencies:
+    hoist-non-inferno-statics "^1.1.3"
+    inferno-shared "5.0.6"
+
 inferno-router@^5.0.1:
   version "5.0.5"
   resolved "https://registry.npmjs.org/inferno-router/-/inferno-router-5.0.5.tgz#3fb68a63e6fa4c9b27b7b87861b1c3fca67015b9"
@@ -4044,6 +4051,10 @@ inferno-router@^5.0.1:
 inferno-shared@5.0.5, inferno-shared@^5.0.1:
   version "5.0.5"
   resolved "https://registry.npmjs.org/inferno-shared/-/inferno-shared-5.0.5.tgz#44a59ec9640998e7244396b5c012fbd8f8e6ec91"
+
+inferno-shared@5.0.6:
+  version "5.0.6"
+  resolved "https://verdaccio.blueclouds.io:4873/inferno-shared/-/inferno-shared-5.0.6.tgz#392ed65f910049204b826c4640f5c1bf45c68e84"
 
 inferno-vnode-flags@5.0.5, inferno-vnode-flags@^5.0.1:
   version "5.0.5"
