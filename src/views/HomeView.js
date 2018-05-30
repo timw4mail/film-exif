@@ -10,7 +10,6 @@ import {
 	ModalHeader,
 	Row,
 } from '//components/Bootstrap';
-import { JSONMessage } from '//helpers/web-socket';
 
 export class HomeView extends Component {
 	constructor (props) {
@@ -40,22 +39,22 @@ export class HomeView extends Component {
 		const newTransfer = { ...e.dataTransfer };
 		console.info(newTransfer);
 
-		window.clientWS.send(JSONMessage('dropped-files', draggedFiles));
+		window.wsCache.sendJSON('dropped-files', draggedFiles);
 	}
 
 	showErrorDialog () {
-		window.clientWS.send(JSONMessage(
+		window.wsCache.sendJSON(
 			'show-error-box',
 			'Looks like there was a problem. (╥﹏╥) \n (╯°□°）╯︵ ┻━┻'
-		));
+		);
 	}
 
 	showOpenDialog () {
-		window.clientWS.send(JSONMessage('show-open-dialog', {}));
+		window.wsCache.sendJSON('show-open-dialog');
 	}
 
 	showSaveDialog () {
-		window.clientWS.send(JSONMessage('show-save-dialog', {}));
+		window.wsCache.sendJSON('show-save-dialog');
 	}
 
 	toggleErrorModal () {

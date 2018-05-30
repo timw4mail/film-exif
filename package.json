@@ -7,8 +7,9 @@
   "build": {
     "appId": "net.timshomepage.film-exif",
     "files": [
-      "build/*",
-      "node_modules/**/*"
+      "build/**/*",
+      "node_modules/**/*",
+      "src/**/*"
     ]
   },
   "dependencies": {
@@ -18,9 +19,8 @@
     "inferno": "^5.0.1",
     "inferno-bootstrap": "^5.0.0",
     "inferno-dev-utils": "^5.3.0",
-    "inferno-redux": "^5.0.4",
     "inferno-router": "^5.0.1",
-    "redux": "^4.0.0",
+    "lodash": "^4.17.10",
     "sqlite3": "^4.0.0",
     "ws": "^5.1.1"
   },
@@ -54,7 +54,7 @@
     "raf": "^3.4.0"
   },
   "scripts": {
-    "build": "parcel build index.html --out-dir build --detailed-report",
+    "build": "parcel build index.html --out-dir build/app --detailed-report",
     "dist": "yarn run build && build",
     "electron-start": "node src/electron/wait-inferno",
     "electron": "electron .",
@@ -69,6 +69,9 @@
   },
   "homepage": "./",
   "main": "src/electron/index.js",
+  "mac": {
+    "category": "public.app-category.photography"
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"

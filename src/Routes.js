@@ -7,7 +7,7 @@ import {
 	OopsView,
 } from '//views';
 
-export const Routes = (props) => (
+export const Routes = () => (
 	<Switch>
 		<Route exact path="/" component={HomeView} />
 		<Route path="/camera" component={CameraAddView} />
