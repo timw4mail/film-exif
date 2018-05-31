@@ -29,7 +29,6 @@ export class HomeView extends Component {
 	}
 
 	componentDidMount () {
-		console.log(this);
 		this.bindEvents();
 	}
 

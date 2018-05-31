@@ -8,7 +8,7 @@ import {
 	NavItem,
 } from '//components/Bootstrap';
 import { Routes } from '//Routes';
-import { createWsCache } from './wsCache';
+import { createWsCache } from '//WSCache';
 
 export class App extends Component {
 	constructor (props, context) {
