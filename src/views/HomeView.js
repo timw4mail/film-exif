@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Component } from 'inferno';
 import {
 	Button,
@@ -16,10 +17,28 @@ export class HomeView extends Component {
 		super(props);
 
 		this.state = {
+			exifData: [],
 			showModal: false,
 		};
 
-		this.toggleErrorModal = this.toggleErrorModal.bind(this);
+		_.bindAll(this, [
+			'bindEvents',
+			'handleDrop',
+			'toggleErrorModal',
+		]);
+	}
+
+	componentDidMount () {
+		console.log(this);
+		this.bindEvents();
+	}
+
+	bindEvents () {
+		this.context.ws.subscribe('parsed-exif-tags', data => {
+			this.setState({
+				exifData: data,
+			});
+		});
 	}
 
 	handleDragOver (e) {
@@ -39,22 +58,22 @@ export class HomeView extends Component {
 		const newTransfer = { ...e.dataTransfer };
 		console.info(newTransfer);
 
-		window.wsCache.sendJSON('dropped-files', draggedFiles);
+		this.context.ws.sendJSON('dropped-files', draggedFiles);
 	}
 
 	showErrorDialog () {
-		window.wsCache.sendJSON(
+		this.context.ws.sendJSON(
 			'show-error-box',
 			'Looks like there was a problem. (╥﹏╥) \n (╯°□°）╯︵ ┻━┻'
 		);
 	}
 
 	showOpenDialog () {
-		window.wsCache.sendJSON('show-open-dialog');
+		this.context.ws.sendJSON('show-open-dialog');
 	}
 
 	showSaveDialog () {
-		window.wsCache.sendJSON('show-save-dialog');
+		this.context.ws.sendJSON('show-save-dialog');
 	}
 
 	toggleErrorModal () {
@@ -92,6 +111,12 @@ export class HomeView extends Component {
 								<Button onClick={this.toggleErrorModal}>Show Error Modal</Button>
 							</Col>
 						</Row>
+						<Row>
+							<Col md={12}>
+								<h3>Parsed Exif Data</h3>
+								<pre>{JSON.stringify(this.state.exifData, null, 2)}</pre>
+							</Col>
+						</Row>
 					</Container>
 				</Jumbotron>
 				<Modal fade isOpen={this.state.showModal} toggle={this.toggleErrorModal}>
@@ -99,7 +124,7 @@ export class HomeView extends Component {
 						Error Title
 					</ModalHeader>
 					<ModalBody>
-						Body of error message
+						Looks like there was a problem. (╥﹏╥)<br />(╯°□°）╯︵ ┻━┻
 					</ModalBody>
 					<ModalFooter>
 						<Button color="primary" onClick={this.toggleErrorModal}>Close</Button>

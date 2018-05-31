@@ -1,9 +1,9 @@
-import * as _ from 'lodash'
+import * as _ from 'lodash';
 import { JSONMessage } from '//helpers/web-socket';
 
-export class wsCache {
+export class WSCache {
 	constructor (ws) {
-		this.ws = ws
+		this.ws = ws;
 
 		this.ws.addEventListener('message', this.onWebSocketMessage);
 		this.ws.addEventListener('close', this.onWebSocketClose);
@@ -13,17 +13,18 @@ export class wsCache {
 		// These hold previous messages if they are needed later
 		this.slots = {
 			'default': [],
-		}
+		};
 
 		// Send messages
 		this.sent = {
 			'default': [],
-		}
+		};
 
 		//  Subscribers
 		this.listeners = {
 			'default': [console.info],
-		}
+			'server-log': [console.dir],
+		};
 
 		_.bindAll(this, [
 			'onWebSocketClose',
@@ -32,7 +33,7 @@ export class wsCache {
 			'send',
 			'sendJSON',
 			'subscribe',
-		])
+		]);
 	}
 
 	onWebSocketClose () {
@@ -47,10 +48,9 @@ export class wsCache {
 	onWebSocketMessage (message) {
 		try {
 			const messageObject = JSON.parse(message.data);
-			const [slot, data] = messageObject;
-			window.wsCache.publish(slot, data);
+			WSCache.instance.publish(messageObject[0], messageObject[1]);
 		} catch (e) {
-			window.wsCache.publish('default', message.data);
+			WSCache.instance.publish('default', message.data);
 		}
 	}
 
@@ -69,7 +69,7 @@ export class wsCache {
 		this.slots[slot].push(data);
 
 		this.listeners[slot].forEach(listener => {
-			listener(data)
+			listener(data);
 		});
 	}
 
@@ -123,9 +123,19 @@ export class wsCache {
 		return {
 			remove: () => {
 				delete this.listeners[slot][listenerIndex];
-			}
-		}
+			},
+		};
 	}
 }
+WSCache.instance = null;
 
-export default wsCache;
+export function createWsCache () {
+	if (WSCache.instance === null) {
+		const ws = new WebSocket('ws://localhost:65432/');
+		const instance = new WSCache(ws);
+		WSCache.instance = instance;
+		return instance;
+	}
+
+	return WSCache.instance;
+}
