@@ -1,14 +1,22 @@
 {
-  "name": "film-exif-electron",
+  "name": "film-exif",
   "author": "Timothy J. Warren",
-  "description": "A cross-platform app to exit exif tags",
+  "description": "A cross-platform app to edit exif tags",
   "version": "0.5.0",
   "private": true,
   "build": {
-    "asar": true,
     "appId": "net.timshomepage.film-exif",
+    "asar": false,
+    "copyright": "Copyright © year ${author}",
+    "files": [
+      "src/**/*",
+      "build/**/*",
+      "node_modules/**/*"
+    ],
     "mac": {
-      "category": "public.app-category.photography"
+      "category": "public.app-category.photography",
+      "icon": "assets/icons/FilmExif.icns",
+      "identity": null
     }
   },
   "dependencies": {

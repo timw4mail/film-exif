@@ -1,4 +1,4 @@
-import _ from 'lodash-es';
+import bindAll from 'lodash-es/bindAll';
 import { JSONMessage } from '//helpers/web-socket';
 
 export class WSCache {
@@ -26,7 +26,7 @@ export class WSCache {
 			'server-log': [console.dir],
 		};
 
-		_.bindAll(this, [
+		bindAll(this, [
 			'onWebSocketClose',
 			'onWebSocketMessage',
 			'publish',

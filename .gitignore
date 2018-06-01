@@ -270,5 +270,6 @@ $RECYCLE.BIN/
 ## Built files
 build/
 dist/
+public/stats.html
 
 # End of https://www.gitignore.io/api/osx,vim,code,node,linux,emacs,windows,jetbrains+all

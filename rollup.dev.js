@@ -4,6 +4,7 @@ import alias from 'rollup-plugin-alias';
 import filesize from 'rollup-plugin-filesize';
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
+import visualizer from 'rollup-plugin-visualizer';
 
 // Force the appropriate environment
 process.env.NODE_ENV = 'development';
@@ -26,5 +27,9 @@ export default {
 			port: 3000,
 		}),
 		livereload(),
+		visualizer({
+			filename: './public/stats.html',
+			title: 'Film EXIF modules',
+		}),
 	],
 };
