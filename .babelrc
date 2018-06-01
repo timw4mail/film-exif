@@ -1,5 +1,6 @@
 {
 	"presets": [
+		"inferno-app",
 		["env", {
 			"targets": {
 				"browsers": [
@@ -7,11 +8,12 @@
 					"not ie 11",
 					"not op_mini all"
 				]
-			}
-		}],
-		"inferno-app"
+			},
+			"modules": false
+		}]
 	],
 	"plugins": [
+		"external-helpers",
 		["module-resolver", {
 			"root": ["./src"],
 			"alias": {

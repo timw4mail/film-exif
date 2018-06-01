@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import _ from 'lodash-es';
 import { JSONMessage } from '//helpers/web-socket';
 
 export class WSCache {

@@ -22,3 +22,4 @@ export const Loader = (props) => {
 		</section>
 	);
 };
+Loader.displayName = 'Loader';

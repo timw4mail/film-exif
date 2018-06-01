@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import _ from 'lodash-es';
 import { Component } from 'inferno';
 import {
 	Button,
@@ -24,6 +24,9 @@ export class HomeView extends Component {
 		_.bindAll(this, [
 			'bindEvents',
 			'handleDrop',
+			'showErrorDialog',
+			'showOpenDialog',
+			'showSaveDialog',
 			'toggleErrorModal',
 		]);
 	}
