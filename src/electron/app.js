@@ -26,10 +26,13 @@ const createWindow = () => {
 		slashes: true,
 	});
 	mainWindow.loadURL(startUrl);
+
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools({
-		mode: 'bottom',
-	});
+	if (process.env.NODE_ENV !== 'production') {
+		mainWindow.webContents.openDevTools({
+			mode: 'bottom',
+		});
+	}
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', () => {

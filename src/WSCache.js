@@ -1,7 +1,7 @@
 import bindAll from 'lodash-es/bindAll';
 import { JSONMessage } from '//helpers/web-socket';
 
-export class WSCache {
+class WSCache {
 	constructor (ws) {
 		this.ws = ws;
 
