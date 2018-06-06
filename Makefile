@@ -26,7 +26,4 @@ lint: node_modules
 node_modules:
 	yarn --ignore-engines
 
-react-start: node_modules
-	yarn inferno-start
-
 .PHONY: all clean electron-start fix lint react-start

@@ -6,7 +6,7 @@
   "private": true,
   "build": {
     "appId": "net.timshomepage.film-exif",
-    "asar": false,
+    "asar": true,
     "copyright": "Copyright © year ${author}",
     "files": [
       "src/**/*",
@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
+    "better-sqlite3": "^4.1.1",
     "electron-log": "^2.2.14",
     "esm": "^3.0.40",
     "exiftool-vendored": "^4.25.0",
@@ -42,6 +43,7 @@
     "bootstrap": "^4",
     "electron": "^2.0.2",
     "electron-builder": "^20.15.1",
+    "electron-devtools-installer": "^2.2.4",
     "eslint": "^4.19.1",
     "eslint-config-happiness": "^10.2.1",
     "eslint-config-inferno-app": "^6.2.0",
@@ -53,6 +55,7 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
+    "inferno-devtools": "^5.0.6",
     "jest": "^23.0.1",
     "jquery": "^3.3.1",
     "raf": "^3.4.0",
@@ -70,18 +73,18 @@
     "rollup-plugin-uglify": "^4.0.0",
     "rollup-plugin-visualizer": "^0.6.0"
   },
+  "homepage": "/",
   "scripts": {
     "build": "set NODE_ENV=production && rollup --config rollup.prod.js",
     "dist": "yarn run build && build",
-    "electron-start": "node src/electron/wait-inferno",
+    "electron-start": "set NODE_ENV=development && node src/electron/wait-inferno",
     "electron": "electron .",
     "fix": "eslint --fix src/**/*.js",
-    "inferno-start": "rollup --config rollup.dev.js --watch",
+    "inferno-start": "set NODE_ENV=development && rollup --config rollup.dev.js --watch",
     "lint": "eslint src/**/*.js",
     "pack": "build --dir",
     "postinstall": "electron-builder install-app-deps",
     "precommit": "yarn lint",
-    "react-start": "npm run inferno-start",
     "test": "node scripts/test.js --env=jsdom"
   },
   "main": "src/electron/index.js",

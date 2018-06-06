@@ -1,4 +1,5 @@
 import {app, BrowserWindow} from 'electron';
+import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import log from 'electron-log';
 import path from 'path';
 import url from 'url';
@@ -6,18 +7,35 @@ import url from 'url';
 log.transports.file.level = false;
 log.transports.console.level = 'info';
 
+const DEV_MODE = process.env.NODE_ENV === 'development';
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 const createWindow = () => {
 	// Create the browser window.
-	mainWindow = new BrowserWindow({
-		webPreferences: {
-			contextIsolation: true,
-			nodeIntegration: false,
-		},
-	});
+	if (DEV_MODE) {
+		mainWindow = new BrowserWindow();
+	} else {
+		mainWindow = new BrowserWindow({
+			webPreferences: {
+				contextIsolation: true,
+				nodeIntegration: false,
+			},
+		});
+	}
+
+	// Open the DevTools.
+	if (DEV_MODE) {
+		installExtension(REACT_DEVELOPER_TOOLS)
+			.then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
+			.catch((err) => console.log('An error occurred: ', err));
+
+		mainWindow.webContents.openDevTools({
+			mode: 'bottom',
+		});
+	}
 
 	// load the index.html of the app.
 	const startUrl = process.env.ELECTRON_START_URL || url.format({
@@ -26,13 +44,6 @@ const createWindow = () => {
 		slashes: true,
 	});
 	mainWindow.loadURL(startUrl);
-
-	// Open the DevTools.
-	if (process.env.NODE_ENV !== 'production') {
-		mainWindow.webContents.openDevTools({
-			mode: 'bottom',
-		});
-	}
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', () => {

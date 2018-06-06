@@ -1,7 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
 import commonjs from 'rollup-plugin-commonjs';
-import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 
 export default {
@@ -17,10 +16,6 @@ export default {
 			'public/favicon.ico': 'build/favicon.ico',
 			'public/css/bootstrap.css': 'build/css/bootstrap.css',
 			'public/css/app.css': 'build/css/app.css',
-			verbose: true,
-		}),
-		replace({
-			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
 		}),
 		resolve({
 			jsnext: true,

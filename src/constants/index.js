@@ -1,1 +1,1 @@
-export * from '//constants/redux-actions';
+export * from './build';

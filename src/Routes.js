@@ -1,4 +1,4 @@
-import { Route, Switch } from 'inferno-router';
+import { Redirect, Route, Switch } from 'inferno-router';
 
 import {
 	CameraAddView,
@@ -9,7 +9,8 @@ import {
 
 export const Routes = () => (
 	<Switch>
-		<Route exact path="/" component={HomeView} />
+		<Route exact path="/" render={() => <Redirect to="/home" />} />
+		<Route exact path="/home" component={HomeView} />
 		<Route path="/camera" component={CameraAddView} />
 		<Route path="/film" component={FilmAddView} />
 		<Route component={OopsView} />

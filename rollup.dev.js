@@ -3,17 +3,18 @@ import baseConfig from './rollup.config';
 import alias from 'rollup-plugin-alias';
 import filesize from 'rollup-plugin-filesize';
 import livereload from 'rollup-plugin-livereload';
+import replace from 'rollup-plugin-replace';
 import serve from 'rollup-plugin-serve';
 import visualizer from 'rollup-plugin-visualizer';
-
-// Force the appropriate environment
-process.env.NODE_ENV = 'development';
 
 export default {
 	...baseConfig,
 	plugins: [
 		alias({
 			'inferno': `${__dirname}/node_modules/inferno/dist/index.dev.esm.js`,
+		}),
+		replace({
+			'process.env.NODE_ENV': "'development'",
 		}),
 		...baseConfig.plugins,
 		filesize(),
