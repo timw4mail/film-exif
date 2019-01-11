@@ -19,10 +19,11 @@ export default {
 		...baseConfig.plugins,
 		filesize(),
 		serve({
-			contentBase: ['./public', './build'],
+			contentBase: ['build', 'public'],
 			host: 'localhost',
 			headers: {
 				'Access-Control-Allow-Origin': '*',
+				'Content-Security-Policy': "default-src 'none'; script-src 'self' localhost:35729 localhost:65432; connect-src 'self' ws://localhost:35729 ws://localhost:65432; img-src 'self' data://*; style-src 'self';",
 			},
 			historyApiFallback: true,
 			port: 3000,

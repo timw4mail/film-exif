@@ -1,5 +1,3 @@
-import { linkEvent, Component } from 'inferno';
-
 import {
 	Button,
 	Card,
@@ -11,6 +9,7 @@ import {
 	Form,
 	Row,
 } from '//components/Bootstrap';
+import { DOMForm } from '//components';
 
 import { FormBlock } from '//components/Form';
 
@@ -25,89 +24,80 @@ import { FormBlock } from '//components/Form';
  * Flash Model
  */
 
-export class CameraAddView extends Component {
-	constructor (props) {
-		super(props);
+function logFormData (formData) {
+	const data = {};
+	formData.forEach((value, key) => {
+		data[key] = value;
+	});
+	console.log(data);
+}
 
-		this.state = {
-			form: {
-				valid: {},
-				values: {},
-			},
-		};
-	}
+function handleFormChange (formData) {
+	// logFormData(formData);
+}
 
-	handleFormChange (instance, e) {
-		instance.setState({
-			form: {
-				...instance.state.form,
-				values: {
-					...instance.state.form.values,
-					[e.target.id]: e.target.value,
-				},
-			},
-		});
-	}
+function handleSave (formData) {
+	logFormData(formData);
+}
 
-	render () {
-		return (
-			<Row className="full-height">
-				<Col sm={12} md={8} lg={4} className="abs-center">
-					<Form onKeyDown={ linkEvent(this, this.handleFormChange) }>
-						<Card>
-							<CardHeader>
-								<CardTitle>Add a Camera</CardTitle>
-							</CardHeader>
-							<CardBody>
-								<Row className="align-items-baseline">
-									<FormBlock
-										label="Brand"
-										name="brand"
-										required
-										value={this.state.form.values['brand']}
-									/>
-									<FormBlock
-										label="Model"
-										name="model"
-										required
-										value={this.state.form.values['model']}
-									/>
-									<FormBlock
-										label="Serial"
-										name="serial"
-										required
-										value={this.state.form.values['serial']}
-									/>
-									<FormBlock
-										label="Film Format"
+export function CameraAddView (props) {
+	return (
+		<Row className="full-height">
+			<Col sm={12} md={8} lg={4} className="abs-center">
+				<DOMForm
+					onChange={handleFormChange}
+					onSubmit={handleSave}
+				>
+					<Card>
+						<CardHeader>
+							<CardTitle>Add a Camera</CardTitle>
+						</CardHeader>
+						<CardBody>
+							<Row className="align-items-baseline">
+								<FormBlock
+									label="Brand"
+									name="brand"
+									required
+								/>
+								<FormBlock
+									label="Model"
+									name="model"
+									required
+								/>
+								<FormBlock
+									label="Serial"
+									name="serial"
+									required
+								/>
+								<FormBlock
+									label="Film Format"
+									name="film-format"
+								>
+									<select
+										className="custom-select"
+										id="film-format"
 										name="film-format"
-										value={this.state.form.values['film-format']}
 									>
-										<select
-											className="custom-select"
-											id="film-format"
-											name="film-format"
-										>
-											<option value="110">110</option>
-											<option value="120">120</option>
-											<option value="127">127</option>
-											<option value="135">135</option>
-											<option value="220">220</option>
-										</select>
-									</FormBlock>
-								</Row>
-							</CardBody>
-							<CardFooter>
-								<Row>
-									<Col xs={12}>
-										<Button color="primary" type="submit">Save</Button>
-									</Col>
-								</Row>
-							</CardFooter>
-						</Card>
-					</Form>
-				</Col>
-			</Row>
-		);
-	}
+										<option value="">&nbsp;</option>
+										<option value="110">110</option>
+										<option value="120">120</option>
+										<option value="127">127</option>
+										<option value="135">135</option>
+										<option value="220">220</option>
+									</select>
+								</FormBlock>
+							</Row>
+						</CardBody>
+						<CardFooter>
+							<Row>
+								<Col xs={12}>
+									<Button color="primary" type="submit">Save</Button>
+								</Col>
+							</Row>
+						</CardFooter>
+					</Card>
+				</DOMForm>
+			</Col>
+		</Row>
+	);
 }

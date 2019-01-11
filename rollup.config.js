@@ -17,13 +17,14 @@ export default {
 			'public/css/bootstrap.css': 'build/css/bootstrap.css',
 			'public/css/app.css': 'build/css/app.css',
 		}),
-		resolve({
-			jsnext: true,
-			browser: true,
+		resolve(),
+		commonjs({
+			include: 'node_modules/**',
+			exclude: 'src/**',
 		}),
 		babel({
 			exclude: 'node_modules/**',
+			runtimeHelpers: true,
 		}),
-		commonjs(),
 	],
 };

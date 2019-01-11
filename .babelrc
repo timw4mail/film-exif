@@ -1,7 +1,7 @@
 {
 	"presets": [
 		"inferno-app",
-		["env", {
+		["@babel/env", {
 			"targets": {
 				"browsers": [
 					">1%",
@@ -13,7 +13,6 @@
 		}]
 	],
 	"plugins": [
-		"external-helpers",
 		["module-resolver", {
 			"root": ["./src"],
 			"alias": {

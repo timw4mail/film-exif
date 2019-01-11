@@ -1,4 +1,4 @@
-const {spawn} = require('child_process');
+const { spawn } = require('child_process');
 const log = require('electron-log');
 const net = require('net');
 const port = process.env.PORT ? (process.env.PORT - 100) : 3000;
