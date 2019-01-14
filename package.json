@@ -13,6 +13,9 @@
       "build/**/*",
       "node_modules/**/*"
     ],
+    "directories": {
+      "buildResources": "assets"
+    },
     "mac": {
       "category": "public.app-category.photography",
       "icon": "assets/icons/FilmExif.icns",
@@ -80,7 +83,8 @@
   },
   "scripts": {
     "build": "set NODE_ENV=production && rollup --config rollup.prod.js",
-    "dist": "yarn run build && build",
+    "predist": "yarn run build",
+    "dist": "build",
     "electron-start": "set NODE_ENV=development && node src/electron/wait-inferno",
     "electron": "electron .",
     "fix": "eslint --fix src/**/*.js",

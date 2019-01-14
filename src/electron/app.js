@@ -1,8 +1,6 @@
 import {app, BrowserWindow} from 'electron';
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import log from 'electron-log';
 import path from 'path';
-import url from 'url';
 
 log.transports.file.level = false;
 log.transports.console.level = 'info';
@@ -15,34 +13,24 @@ let mainWindow;
 
 const createWindow = () => {
 	// Create the browser window.
-	if (DEV_MODE) {
-		mainWindow = new BrowserWindow();
-	} else {
-		mainWindow = new BrowserWindow({
-			webPreferences: {
-				contextIsolation: true,
-				nodeIntegration: false,
-			},
-		});
-	}
+	mainWindow = new BrowserWindow({
+		webPreferences: {
+			contextIsolation: true,
+			nodeIntegration: false,
+		},
+	});
 
 	// Open the DevTools.
 	if (DEV_MODE) {
-		installExtension(REACT_DEVELOPER_TOOLS)
-			.then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
-			.catch((err) => console.log('An error occurred: ', err));
-
 		mainWindow.webContents.openDevTools({
 			mode: 'bottom',
 		});
 	}
 
 	// load the index.html of the app.
-	const startUrl = process.env.ELECTRON_START_URL || url.format({
-		pathname: path.join(__dirname, '/../../build/index.html'),
-		protocol: 'file:',
-		slashes: true,
-	});
+	const startUrl = DEV_MODE
+		? 'http://localhost:3000'
+		: `file://${path.join(__dirname, '/../../build/index.html')}`;
 	mainWindow.loadURL(startUrl);
 
 	// Emitted when the window is closed.
