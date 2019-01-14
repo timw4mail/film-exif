@@ -6,7 +6,6 @@ import {
 	CardFooter,
 	CardTitle,
 	Col,
-	Form,
 	Row,
 } from '//components/Bootstrap';
 import { DOMForm } from '//components';
@@ -65,6 +64,11 @@ export function CameraAddView (props) {
 									required
 								/>
 								<FormBlock
+									label="Lens Mount"
+									name="mount"
+									required
+								/>
+								<FormBlock
 									label="Serial"
 									name="serial"
 									required
@@ -79,11 +83,16 @@ export function CameraAddView (props) {
 										name="film-format"
 									>
 										<option value="">&nbsp;</option>
-										<option value="110">110</option>
-										<option value="120">120</option>
-										<option value="127">127</option>
-										<option value="135">135</option>
-										<option value="220">220</option>
+										<optgroup label="Miniature Format">
+											<option value="110">110</option>
+											<option value="135">35mm (135)</option>
+										</optgroup>
+										<optgroup label="Medium Format">
+											<option value="120">120</option>
+											<option value="127">127</option>
+											<option value="220">220</option>
+											<option value="620">620</option>
+										</optgroup>
 									</select>
 								</FormBlock>
 							</Row>

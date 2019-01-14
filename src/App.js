@@ -34,6 +34,9 @@ export class App extends Component {
 								<NavLink className="nav-link" to="/camera/list">Cameras</NavLink>
 							</NavItem>
 							<NavItem>
+								<NavLink className="nav-link" to="/lenses/add">Lenses</NavLink>
+							</NavItem>
+							<NavItem>
 								<NavLink className="nav-link" to="/film/add">Films</NavLink>
 							</NavItem>
 							<NavItem>

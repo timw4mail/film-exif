@@ -1,5 +1,3 @@
-import { linkEvent, Component } from 'inferno';
-
 import {
 	Button,
 	Card,
@@ -8,11 +6,11 @@ import {
 	CardFooter,
 	CardTitle,
 	Col,
-	Form,
 	Row,
 } from '//components/Bootstrap';
 
 import { FormBlock } from '//components/Form';
+import { DOMForm } from '//components';
 
 /*
  * Fields from AnalogExif
@@ -24,92 +22,91 @@ import { FormBlock } from '//components/Form';
  * ISO Rating
  */
 
-export class FilmAddView extends Component {
-	constructor (props) {
-		super(props);
+function logFormData (formData) {
+	const data = {};
+	formData.forEach((value, key) => {
+		data[key] = value;
+	});
+	console.log(data);
+}
 
-		this.state = {
-			form: {
-				valid: {},
-				values: {},
-			},
-		};
-	}
+function handleFormChange (formData) {
+	// logFormData(formData);
+}
 
-	handleFormChange (instance, e) {
-		instance.setState({
-			form: {
-				...instance.state.form,
-				values: {
-					...instance.state.form.values,
-					[e.target.id]: e.target.value,
-				},
-			},
-		});
-	}
+function handleSave (formData) {
+	logFormData(formData);
+}
 
-	render () {
-		return (
-			<Row className="full-height">
-				<Col sm={12} md={8} lg={4} className="abs-center">
-					<Form onKeyDown={ linkEvent(this, this.handleFormChange) }>
-						<Card>
-							<CardHeader>
-								<CardTitle>Add a Film</CardTitle>
-							</CardHeader>
-							<CardBody>
-								<Row className="align-items-baseline">
-									<FormBlock
-										label="Brand"
-										name="brand"
-										required
-										value={this.state.form.values['brand']}
-									/>
-									<FormBlock
-										label="Film Name"
-										name="film-name"
-										required
-										value={this.state.form.values['film-name']}
-									/>
-									<FormBlock
-										label="Film Speed (ISO)"
-										max="6400"
-										name="film-speed-asa"
-										required
-										type="number"
-										value={this.state.form.values['film-speed-asa']}
-									/>
-									<FormBlock
-										label="Film Speed (DIN)"
-										name="film-speed-din"
-										type="number"
-										value={this.state.form.values['film-speed-din']}
-									/>
-									<FormBlock
-										label="Film Format"
+export function FilmAddView () {
+	return (
+		<Row className="full-height">
+			<Col sm={12} md={8} lg={4} className="abs-center">
+				<DOMForm onChange={handleFormChange} onSubmit={handleSave}>
+					<Card>
+						<CardHeader>
+							<CardTitle>Add a Film</CardTitle>
+						</CardHeader>
+						<CardBody>
+							<Row className="align-items-baseline">
+								<FormBlock
+									label="Brand"
+									name="brand"
+									required
+								/>
+								<FormBlock
+									label="Film Name"
+									name="film-name"
+									required
+								/>
+								<FormBlock
+									label="Film Speed (ASA/ISO)"
+									max="6400"
+									min="1"
+									name="film-speed-asa"
+									required
+									type="number"
+								/>
+								<FormBlock
+									label="Film Speed (DIN)"
+									name="film-speed-din"
+									type="number"
+								/>
+								<FormBlock
+									label="Film Format"
+									name="film-format"
+								>
+									<select
+										className="custom-select"
+										id="film-format"
 										name="film-format"
-										value={this.state.form.values['film-format']}
 									>
-										<select className="custom-select" id="film-format" name="film-format">
+										<option value="">&nbsp;</option>
+										<optgroup label="Miniature Format">
 											<option value="110">110</option>
+											<option value="135">35mm (135)</option>
+										</optgroup>
+										<optgroup label="Medium Format">
 											<option value="120">120</option>
 											<option value="127">127</option>
-											<option value="135">135</option>
-										</select>
-									</FormBlock>
-								</Row>
-							</CardBody>
-							<CardFooter>
-								<Row>
-									<Col xs={12}>
-										<Button color="primary" type="submit">Save</Button>
-									</Col>
-								</Row>
-							</CardFooter>
-						</Card>
-					</Form>
-				</Col>
-			</Row>
-		);
-	}
-}
+											<option value="220">220</option>
+											<option value="620">620</option>
+										</optgroup>
+									</select>
+								</FormBlock>
+							</Row>
+						</CardBody>
+						<CardFooter>
+							<Row>
+								<Col xs={12}>
+									<Button color="primary" type="submit">Save</Button>
+								</Col>
+							</Row>
+						</CardFooter>
+					</Card>
+				</DOMForm>
+			</Col>
+		</Row>
+	);
+};
+
