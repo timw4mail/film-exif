@@ -1,5 +1,5 @@
 import BSAlert from 'inferno-bootstrap/dist/Alert';
-import Badge from 'inferno-bootstrap/dist/Badge';
+import BSBadge from 'inferno-bootstrap/dist/Badge';
 import Breadcrumb from 'inferno-bootstrap/dist/Breadcrumb';
 import BreadcrumbItem from 'inferno-bootstrap/dist/BreadcrumbItem';
 import ButtonDropdown from 'inferno-bootstrap/dist/ButtonDropdown';
@@ -26,16 +26,18 @@ import Table from 'inferno-bootstrap/dist/Table';
 import Tooltip from 'inferno-bootstrap/dist/Tooltip';
 
 export const BSWrapper = (Component, tagName) => {
-	return ({children, ...props}) => (
+	return ({children, ...props}) => (Component.defaultProps.wrapTag !== undefined) ? (
+		<Component wrapTag={tagName} {...props}>{children}</Component>
+	)	: (
 		<Component tag={tagName} {...props}>{children}</Component>
 	);
 };
 
 export const Alert = BSWrapper(BSAlert, 'bs-alert');
+export const Badge = BSWrapper(BSBadge, 'bs-badge');
 export const Jumbotron = BSWrapper(BSJumbotron, 'bs-jumbotron');
 
 export {
-	Badge,
 	Breadcrumb,
 	BreadcrumbItem,
 	ButtonDropdown,

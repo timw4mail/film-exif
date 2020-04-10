@@ -61,7 +61,7 @@ cssload-loader {
 	margin: auto;
 }
 
-.cssload-inner {
+cssload-inner {
 	position: absolute;
 	width: 100%;
 	height: 100%;

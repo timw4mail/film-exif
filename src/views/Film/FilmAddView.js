@@ -6,11 +6,17 @@ import {
 	CardFooter,
 	CardTitle,
 	Col,
+	FormGroup,
+	FormText,
+	Input,
+	InputGroup,
+	InputGroupAddon,
+	Label,
 	Row,
 } from '//components/Bootstrap';
 
-import { FormBlock } from '//components/Form';
-import { DOMForm } from '//components';
+import {FormBlock} from '//components/Form';
+import {DOMForm} from '//components';
 
 /*
  * Fields from AnalogExif
@@ -40,38 +46,56 @@ function handleSave (formData) {
 
 export function FilmAddView () {
 	return (
-		<Row className="full-height">
-			<Col sm={12} md={8} lg={4} className="abs-center">
+		<Row class="full-height">
+			<Col sm={12} class="abs-center">
 				<DOMForm onChange={handleFormChange} onSubmit={handleSave}>
 					<Card>
 						<CardHeader>
 							<CardTitle>Add a Film</CardTitle>
 						</CardHeader>
 						<CardBody>
-							<Row className="align-items-baseline">
+							<Row class="form-row align-items-baseline">
 								<FormBlock
-									label="Brand"
+									label="Manufacturer"
 									name="brand"
 									required
 								/>
 								<FormBlock
+									helpText="e.g. Ektar, Fujicolor, etc."
 									label="Film Name"
 									name="film-name"
 									required
 								/>
-								<FormBlock
-									label="Film Speed (ASA/ISO)"
-									max="6400"
-									min="1"
-									name="film-speed-asa"
-									required
-									type="number"
-								/>
-								<FormBlock
-									label="Film Speed (DIN)"
-									name="film-speed-din"
-									type="number"
-								/>
+								<Col sm={12} md={6} lg={4}>
+									<FormGroup>
+										<Label for="film-speed-asa">Film Speed (IS0)</Label>
+										<InputGroup>
+											<Input
+												max="6400"
+												maxLength="4"
+												min="1"
+												name="film-speed-asa"
+												placeholder="100"
+												required
+												type="number"
+											/>
+											<InputGroupAddon addonType="append">/</InputGroupAddon>
+											<Input
+												max="39"
+												maxLength="2"
+												min="1"
+												name="film-speed-din"
+												placeholder="21"
+												required
+												size="2"
+												step="1"
+												type="number"
+											/>
+											<InputGroupAddon addonType="append">&deg;</InputGroupAddon>
+										</InputGroup>
+										<FormText>Film Sensitivity</FormText>
+									</FormGroup>
+								</Col>
 								<FormBlock
 									label="Film Format"
 									name="film-format"
@@ -81,10 +105,9 @@ export function FilmAddView () {
 										id="film-format"
 										name="film-format"
 									>
-										<option value="">&nbsp;</option>
 										<optgroup label="Miniature Format">
-											<option value="110">110</option>
-											<option value="135">35mm (135)</option>
+											<option value="110">110 (Pocket Instamatic)</option>
+											<option selected value="135">35mm (135)</option>
 										</optgroup>
 										<optgroup label="Medium Format">
 											<option value="120">120</option>
@@ -108,5 +131,4 @@ export function FilmAddView () {
 			</Col>
 		</Row>
 	);
-};
-
+}

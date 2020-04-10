@@ -56,6 +56,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "exiftool-vendored.pl": "^11.24.0",
     "husky": "^1.3.1",
     "inferno-devtools": "^7.0.5",
     "jest": "^23.0.1",

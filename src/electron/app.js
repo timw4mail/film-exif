@@ -29,7 +29,7 @@ const createWindow = () => {
 
 	// load the index.html of the app.
 	const startUrl = DEV_MODE
-		? 'http://localhost:3000'
+		? 'https://localhost:3000'
 		: `file://${path.join(__dirname, '/../../build/index.html')}`;
 	mainWindow.loadURL(startUrl);
 

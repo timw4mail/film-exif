@@ -5,10 +5,6 @@ class WSCache {
 	constructor (ws) {
 		this.ws = ws;
 
-		this.ws.addEventListener('message', this.onWebSocketMessage);
-		this.ws.addEventListener('close', this.onWebSocketClose);
-		this.ws.addEventListener('error', console.error);
-
 		// Websocket channels
 		// These hold previous messages if they are needed later
 		this.slots = {
@@ -34,9 +30,14 @@ class WSCache {
 			'sendJSON',
 			'subscribe',
 		]);
+
+		this.ws.addEventListener('message', this.onWebSocketMessage);
+		this.ws.addEventListener('close', this.onWebSocketClose);
+		this.ws.addEventListener('error', console.error);
 	}
 
 	onWebSocketClose () {
+		this.ws = null;
 		console.info('WebSocket closed');
 	}
 
@@ -46,16 +47,21 @@ class WSCache {
 	 * @param {mixed} message
 	 */
 	onWebSocketMessage (message) {
+		// `this` is overwritten to be the web socket object,
+		// so use the current instance object instead
 		try {
+			(() => {})();
 			const messageObject = JSON.parse(message.data);
 			WSCache.instance.publish(messageObject[0], messageObject[1]);
 		} catch (e) {
+			console.error('Error resolving web socket message', e);
+			// console.error(message);
 			WSCache.instance.publish('default', message.data);
 		}
 	}
 
 	/*
-	 * Send a recieved websocket message to the appropriate listener(s)
+	 * Send a received websocket message to the appropriate listener(s)
 	 *
 	 * @param {string} slot
 	 * @param {mixed} data
@@ -64,6 +70,10 @@ class WSCache {
 	publish (slot, data) {
 		if (!this.listeners[slot] || data === undefined) {
 			return;
+		}
+
+		if (this.slots[slot] === undefined) {
+			this.slots[slot] = [];
 		}
 
 		this.slots[slot].push(data);
@@ -118,7 +128,8 @@ class WSCache {
 			this.listeners[slot] = [];
 		}
 
-		const listenerIndex = this.listeners[slot].push(cb) -1;
+		this.listeners[slot].push(cb);
+		const listenerIndex = this.listeners[slot].length - 1;
 
 		return {
 			remove: () => {
